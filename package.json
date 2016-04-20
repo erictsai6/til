@@ -1,0 +1,27 @@
+{
+  "name": "til",
+  "version": "1.0.0",
+  "description": "Today I Learned (TIL) - Created for integration with HipChat and Tumblr.  Will post the TIL and list the latest TILs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/erictsai6/til.git"
+  },
+  "keywords": [
+    "til",
+    "hipchat",
+    "twitter"
+  ],
+  "author": "Eric Tsai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erictsai6/til/issues"
+  },
+  "homepage": "https://github.com/erictsai6/til#readme",
+  "dependencies": {
+    "tumblr": "^0.4.1"
+  }
+}
