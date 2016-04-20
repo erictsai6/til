@@ -1,2 +1,7 @@
 
+dist/
+src/config/environments/
+
+*.log
+env.sh
 node_modules/

@@ -12,3 +12,14 @@ I also want them to reference any prior posts as such
 ```
 /til
 ```
+
+# Prerequisites
+```
+export TIL_OAUTH_CONSUMER_KEY=<insert your key here>
+export TIL_OAUTH_CONSUMER_SECRET=<insert your secret here>
+export TIL_OAUTH_TOKEN=<insert your token here>
+export TIL_OAUTH_TOKEN_SECRET=<insert your token secret here>
+
+npm install
+gulp
+```
