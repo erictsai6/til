@@ -2,6 +2,7 @@
 dist/
 src/config/environments/
 
+.env
+
 *.log
-env.sh
 node_modules/
