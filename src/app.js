@@ -17,12 +17,17 @@ var app = express();
 app.set('port', config.port);
 
 app.post('/v1/hipchat', function(req, res) {
+
+    console.log(req.body);
+
     tumblr.post('/post', {
         type: 'text',
-        title: 'tumblrwkstesting',
-        body: '<h3>should work!! </h3>'
-    })
-    .then(function(json) {
+        title: 'tumblrwksddtesting',
+        body: '<h3>shoulddd work!! </h3>'
+    }, function(err, json) {
+        if (err) {
+            console.log(err);
+        }
         res.send();
     });
 });
