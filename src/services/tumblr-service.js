@@ -27,13 +27,19 @@ var tumblrService = {
 
         return deferred.promise;
     },
-    createPost: function(title, post) {
+    createPost: function(title, post, fact) {
         var deferred = q.defer();
+
+        var body = '';
+        if (fact) {
+            body = '(TIL) Random fact: ' + fact + '\n\n';
+        }
+        body += post;
 
         tumblr.post('/post', {
             type: 'text',
             title: title,
-            body: post
+            body: body
         }, function (err, json) {
             if (err) {
                 deferred.reject({

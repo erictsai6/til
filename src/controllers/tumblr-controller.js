@@ -1,5 +1,7 @@
 var tumblrService = require('../services/tumblr-service');
+var randomFactService = require('../services/random-fact-service');
 var logger = require('../utils/logger');
+var moment = require('moment');
 var q = require('q');
 
 function hipchatMessageResponse(message, color, notify, messageFormat) {
@@ -33,15 +35,25 @@ var tumblrController = {
         var title = datetime.format('ddd, MMM DD YYYY');
         var body = author + ': ' + message;
 
-        return tumblrService.getPosts()
-            .then(function(posts) {
+
+
+        return q.all([
+                tumblrService.getPosts(),
+                randomFactService.getRandomFact()
+            ])
+            .then(function(data) {
+                var posts = data[0];
+                var fact = data[1];
+
                 for (var i = 0; i < posts.length; i++) {
                     var post = posts[i];
-                    if (post.title.indexOf(title) > -1) {
+                    var postDatetime = moment(post.date);
+
+                    if (datetime.format('ddd, MMM DD YYYY') === postDatetime.format('ddd, MMM DD YYYY')) {
                         return tumblrService.editPost(post.id, post.body, body);
                     }
                 }
-                return tumblrService.createPost(title, body);
+                return tumblrService.createPost(title, body, fact);
             })
             .then(function(json) {
                 return hipchatMessageResponse('Success!  Visit http://grubhub-umami.tumblr.com/');
