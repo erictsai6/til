@@ -32,7 +32,7 @@ var tumblrService = {
 
         var body = '';
         if (fact) {
-            body = '(TIL) Random fact: ' + fact + '\n\n';
+            body = '(TIL) did you know? - ' + fact + '\n\n';
         }
         body += post;
 

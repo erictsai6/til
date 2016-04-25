@@ -34,8 +34,7 @@ var tumblrController = {
 
         var title = datetime.format('ddd, MMM DD YYYY');
         var body = author + ': ' + message;
-
-
+        var fact;
 
         return q.all([
                 tumblrService.getPosts(),
@@ -43,7 +42,7 @@ var tumblrController = {
             ])
             .then(function(data) {
                 var posts = data[0];
-                var fact = data[1];
+                fact = data[1];
 
                 for (var i = 0; i < posts.length; i++) {
                     var post = posts[i];
@@ -56,7 +55,7 @@ var tumblrController = {
                 return tumblrService.createPost(title, body, fact);
             })
             .then(function(json) {
-                return hipchatMessageResponse('Success!  Visit http://grubhub-umami.tumblr.com/');
+                return hipchatMessageResponse('Success!  Visit http://grubhub-umami.tumblr.com/\n\nBTW, did you know? - ' + fact);
             })
             .catch(function(err) {
                 logger.error(err.message);
